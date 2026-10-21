@@ -1,0 +1,17 @@
+services:
+  rioja-tour-agent:
+    build: . 
+    container_name: rioja-tour-agent
+    expose:
+      - 8000
+    restart: unless-stopped
+    env_file:
+      - .env.development
+    environment:
+      - PY_ENV=production
+    networks:
+      - internal-network
+
+networks:
+  internal-network:
+    external: true
